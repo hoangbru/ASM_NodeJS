@@ -1,0 +1,76 @@
+.contact__container {
+  display: grid;
+  grid-template-columns: max-content;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+
+.contact__form {
+  width: 360px;
+}
+
+.contact__form-group {
+  position: relative;
+  height: 4rem;
+  margin-bottom: var(--mb-2-5);
+}
+
+.contact__form-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid var(--main-color); */
+  border: none;
+  background: var(--box-color);
+  border-radius: 0.75rem;
+  color: var(--text-color);
+  padding: 1.5rem;
+  z-index: 1;
+}
+
+.contact__form-tag {
+  color: var(--main-color);
+  position: absolute;
+  top: -1.75rem;
+  left: 1.25rem;
+  font-size: var(--normal-font-size);
+  padding: 0.25rem;
+  z-index: 10;
+}
+
+textarea.contact__form-input {
+  resize: none;
+}
+
+.contact__form-area {
+  height: 11rem;
+}
+
+.contact__form-send {
+  background: var(--main-color-light);
+  transition: 0.5s ease-in-out;
+  column-gap: 0.25rem;
+}
+
+.contact__form-send:hover {
+  box-shadow: 0 0 0.25rem var(--main-color-light);
+  background: none;
+  transition: 0.5s ease-in-out;
+}
+
+/*=============== BREAKPOINTS ===============*/
+@media screen and (max-width: 576px) {
+  .contact__form {
+    width: 300px;
+  }
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+  .contact__form {
+    width: 250px;
+  }
+}

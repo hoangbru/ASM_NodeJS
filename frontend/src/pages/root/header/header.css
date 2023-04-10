@@ -1,0 +1,158 @@
+.header {
+  width: 100%;
+  position: fixed;
+  top: 20px;
+  left: 0;
+  z-index: var(--z-fixed);
+
+}
+
+.nav {
+  /* height: calc(var(--header-height) + 1.5rem); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.nav__menu {
+  width: 70%;
+}
+
+.nav__toggle {
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  font-size: var(--small-color);
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  transition: 0.3s;
+}
+
+.nav__icon {
+  padding: 2px;
+  font-size: var(--normal-font-size);
+}
+
+.nav__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+  background-color: rgba(55, 56, 61, 0.6);
+  /* top: 15px; */
+  padding: 1rem 2rem;
+  z-index: 100;
+  border: none;
+  border-radius: 30px;
+  color: #fff !important;
+  box-shadow: 0 4px 4px -2px rgba(255, 255, 255, 0.5),
+    0 -4px 4px -2px rgba(255, 255, 255, 0.5),
+    4px 0 4px -2px rgba(255, 255, 255, 0.5),
+    -4px 0 4px -2px rgba(255, 255, 255, 0.5);
+}
+
+.nav__close,
+.nav__toggle {
+  display: none;
+}
+
+/* Active link */
+.active-link,
+.nav__link:hover {
+  color: var(--main-color-light);
+}
+
+/*=============== BREAKPOINTS ===============*/
+
+
+/* For medium devices */
+@media screen and (max-width: 768px) {
+  .header {
+    top: initial;
+    bottom: 0;
+  }
+
+  nav {
+    height: var(--header-height);
+  }
+
+  .nav__menu {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 2rem 1.5rem 4rem;
+    background-color:  rgba(55, 56, 61, 1);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transition: .5s;
+    z-index: 100;
+  }
+
+  /* Show menu */
+  .show-menu {
+    bottom: 0;
+  }
+
+  .nav__link {
+    flex-direction: column;
+    position: relative;
+  }
+
+  .nav__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .nav__close {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  .nav__close:hover {
+    color: var(--main-color);
+  }
+
+  .nav__toggle {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  /* Hidden toggle */
+  .hidden-toggle {
+    bottom: -100%;
+  }
+
+  .nav__close,
+  .nav__toggle {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 576px) {
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+  .nav__menu {
+    padding: 2rem 0.5rem 4rem;
+  }
+
+  .nav__list {
+    column-gap: 0;
+  }
+}
