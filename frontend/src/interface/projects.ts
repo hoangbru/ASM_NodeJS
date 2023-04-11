@@ -8,6 +8,7 @@ export interface IProject {
   linkGithub?: string;
   technologyId?: [];
   categoryId: {};
+  slug: string;
   createdAt?: Date;
   updateAt?: Date;
   deleteAt?: Date;

@@ -62,7 +62,7 @@ const ProjectList = ({ projects, onRemove }: Props) => {
   useEffect(() => {
     if (showNotification) {
       api.success({
-        message: "Delete successfully",
+        message: "Remove successfully",
       });
       setShowNotification(false);
     }
@@ -127,7 +127,7 @@ const ProjectList = ({ projects, onRemove }: Props) => {
         return (
           <Space size="middle">
             <Link
-              to={`/admin/projects/${record._id}/edit`}
+              to={`/admin/project/${record._id}/edit`}
               style={{ color: "rgba(13, 29, 49, 0.9)", fontSize: "18px" }}
             >
               <Tooltip placement="top" title={text}>
@@ -135,7 +135,7 @@ const ProjectList = ({ projects, onRemove }: Props) => {
               </Tooltip>
             </Link>
             <Popconfirm
-              title="Are you sure to delete?"
+              title="Are you sure to remove?"
               // open={removingId !== null}
               onConfirm={() => handleOk(record._id)}
               okButtonProps={{ loading: confirmLoading }}

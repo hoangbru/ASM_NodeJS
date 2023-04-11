@@ -5,6 +5,7 @@ import { Space, Table, Tag, Button, Tooltip,Popconfirm,notification } from "antd
 import type { ColumnsType } from "antd/es/table";
 import { IProject } from "../../../interface/projects";
 import { ITechnology } from "../../../interface/technologies";
+import { forceDeleteProject, restoreProject } from "../../../api/projects";
 // import '../../../assets/css/admin.css';
 
 interface DataType {
@@ -13,6 +14,7 @@ interface DataType {
   image?: string;
   thumbnail?: string;
   description?: string;
+  slug: string;
   link?: string;
   linkGithub?: string;
   technologyId?: [];
@@ -45,7 +47,7 @@ const ProjectTrash = ({ projectsTrash }: Props) => {
 
   const handleOk = (id: number | string) => {
     setConfirmLoading(true);
-    // onRemove(id);
+    forceDeleteProject(id)
     setOpenId(null);
     setTimeout(function () {
       setShowNotification(true);
@@ -125,14 +127,9 @@ const ProjectTrash = ({ projectsTrash }: Props) => {
         const isOpen = openId === record._id;
         return (
           <Space size="middle">
-            <Link
-              to={`/admin/projects/${record._id}/edit`}
-              style={{ color: "rgba(13, 29, 49, 0.9)", fontSize: "18px" }}
-            >
               <Tooltip placement="top" title={text}>
-                <UndoOutlined />
+                <UndoOutlined onClick={() => restoreProject(record._id)}/>
               </Tooltip>
-            </Link>
             <Popconfirm
               title="Are you sure to delete?"
               // open={removingId !== null}
@@ -156,28 +153,13 @@ const ProjectTrash = ({ projectsTrash }: Props) => {
     },
   ];
 
-//   const data: DataType[] = projectsTrash?.map((project: IProject) => {
-//     return {
-//       key: project._id,
-//       ...project,
-//     };
-//   });
+const data: DataType[] = projectsTrash?.map((project: IProject) => {
+  return {
+    key: project._id,
+    ...project,
+  };
+});
 
-const data = [{
-    key: 1,
-    name: "Project",
-    thumbnail: "gg",
-    link: "jgg",
-    linkGithub: "github",
-    technologyId: [{
-        key: 1,
-        name: "Project"
-    }],
-    categoryId: "fshf"
-}]
-
-  console.log(projectsTrash);
-  
   if (!projectsTrash) return <div>Loading....</div>;
   return (
     <>

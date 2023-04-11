@@ -84,8 +84,7 @@ const AdminLayout: React.FC = (props: Props) => {
   
     btnLogout?.addEventListener('click', function () {
       localStorage.removeItem('user')
-    alert('Bạn đã đăng xuất thành công');
-  
+    // alert('Bạn đã đăng xuất thành công');
     location.reload();
     });
   })

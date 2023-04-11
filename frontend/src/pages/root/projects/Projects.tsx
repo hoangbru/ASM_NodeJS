@@ -51,44 +51,6 @@ const Projects = ({projects, categories }: Props) => {
       </div>
       <div className="projects__container container grid">
         <DataProject category={category} />
-        {/* {projects?.map((item: IProject) => {
-          return (
-            <div className="projects__card" key={item._id}>
-              <div className="projects_div-img">
-                <img src={item.thumbnail} alt="" className="projects__img" />
-              </div>
-              <div className="projects__content">
-                <h3 className="projects__title">{item.name}</h3>
-                <p className="projects__description">{item.description}</p>
-                <div className="projects__tag">
-                  {item.technologyId?.map((tech:ITechnology) => {
-                    return (
-                      <i className={`bx bxl-${tech.tag} key={tech._id} projects__tag-icon`}></i>
-                    )
-                  })}
-                </div>
-                <div className="projects__button">
-                  <a
-                    href={item?.link}
-                    target="_blank"
-                    className="projects__button-demo"
-                  >
-                    <i className="bx bx-link-external"></i>
-                    Demo
-                  </a>
-                  <a
-                    href={item?.linkGithub}
-                    target="_blank"
-                    className="projects__button-github"
-                  >
-                    <i className="bx bxl-github"></i>
-                    View on Github
-                  </a>
-                </div>
-              </div>
-            </div>
-          );
-        })} */}
       </div>
     </section>
   );

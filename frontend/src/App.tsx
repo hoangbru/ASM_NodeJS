@@ -38,13 +38,14 @@ function App() {
       try {
         const project = await getAllProjects();
         setProjects(project.data);
+        const projectsTrash = await getProjectsTrash()
+        setProjectsTrash(projectsTrash.data)
         const category = await getAllCategories();
         setCategories(category.data);
         const technology = await getAllTechnologies();
         setTechnologies(technology.data);
         const user = await getAllUsers();
         setUsers(user.data);
-        
       } catch (error) {
         console.log(error);
       }
@@ -127,7 +128,7 @@ function App() {
             }
           />
           <Route path=":id/edit" element={<ProjectEdit projects={projects} technologies={technologies} categories={categories}/>}/>
-          {/* <Route path="trash" element={<ProjectTrash projectsTrash={projectsTrash} />}/> */}
+          <Route path="trash" element={<ProjectTrash projectsTrash={projectsTrash} />}/>
         </Route>
 
         <Route path="categories">

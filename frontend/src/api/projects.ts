@@ -6,7 +6,7 @@ const user = localStorage.getItem("user");
 const { accessToken = "" } = user ? JSON.parse(user) : {};
 
 export const getProjectsTrash = () => {
-    return instance.get('/projects/trash');
+    return instance.get('/admin/projects/trash');
 }
 
 export const getAllProjects = () => {
@@ -14,7 +14,7 @@ export const getAllProjects = () => {
 }
 
 export const getProject = (id:number | string) => {
-    return instance.get(`/projects/${id}`)
+    return instance.get(`/admin/project/${id}`)
 }
 
 export const addProject = (project:IProject) => {
@@ -26,7 +26,15 @@ export const addProject = (project:IProject) => {
 }
 
 export const removeProject = (id:number | string) => {
-    return instance.delete(`/projects/${id}`,{
+    return instance.delete(`/project/${id}`,{
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+}
+
+export const forceDeleteProject = (id:number | string) => {
+    return instance.delete(`/project/${id}/force`,{
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
@@ -34,7 +42,15 @@ export const removeProject = (id:number | string) => {
 }
 
 export const updateProject = (project:IProject) => {
-    return instance.patch(`/projects/${project._id}`,project,{
+    return instance.patch(`/project/${project._id}`,project,{
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+}
+
+export const restoreProject = (id:number | string) => {
+    return instance.patch(`/project/restore/${id}`,{
         headers: {
             Authorization: `Bearer ${accessToken}`
         }

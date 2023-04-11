@@ -1,6 +1,11 @@
 import { array } from 'joi';
 import mongoose from 'mongoose';
 import mongooseDelete from 'mongoose-delete';
+// import slugify from 'slugify';
+import slug from 'mongoose-slug-generator';
+
+// projectSchema.plugin(slug);
+mongoose.plugin(slug);
 
 const projectSchema = mongoose.Schema({
     name: {
@@ -9,7 +14,7 @@ const projectSchema = mongoose.Schema({
     },
     thumbnail: {
         type: String,
-        required: true,
+        // required: true,
     },
     description: String,
     link: {
@@ -45,11 +50,25 @@ const projectSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    slug: { 
+        type: String, 
+        slug: "name",
+        unique: true 
+    },
 },{timestamps: true, versionKey: false})
 
 projectSchema.plugin(mongooseDelete, {
     deletedAt: true,
-    // overrideMethods: 'all'
+    overrideMethods: 'all'
 })
+
+
+// projectSchema.pre("save", function(next) {
+//     this.slug = slugify(this.name, {
+//         lower: true,
+//         strinct: true,
+//     });
+//     next();
+// })
 
 export default mongoose.model('Project', projectSchema);
