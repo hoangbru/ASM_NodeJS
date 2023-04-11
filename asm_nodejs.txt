@@ -1,0 +1,9 @@
+﻿Các chức năng đã làm được :‎
+CRUD: Projects, Categories, Technologies, Users
+Upload image
+Signin
+Private router
+Validate form
+Populate
+Slug
+Soft delete gần làm được :>>
