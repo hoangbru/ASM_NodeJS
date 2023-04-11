@@ -6,4 +6,4 @@ Private router
 Validate form
 Populate
 Slug
-Soft delete gần làm được :>>
+Soft delete
